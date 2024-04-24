@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta name="author" content="Code X Noob">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
+<title>Confiance India</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #405588;
+	 min-height: 100vh;
+	max-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+	border-style:ridge;
+	border-color:#ff4040;
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+	box-shadow: 0 0 60px rgba(0, 0, 0, 10);
+    }
+    
+    h1 {
+        text-align: center;
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    .folder-list {
+        list-style: none;
+        padding: 0;
+        display: contents;
+    }
+    .folder-list li {
+        margin-bottom: 10px;
+    }
+    .folder-list li a {
+        display: inline-block;
+        padding: 10px 30px;
+        background: #007bff; /* Vibrant Blue Color */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        font-size: 18px;
+    }
+    .folder-list li a:hover {
+        color: #fff;
+        background: Green; /* Slightly darker blue on hover */
+    }
+    .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+	font-size:25px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+    .popup {
+        position: absolute;
+	display:none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+    }
+	.popup2{
+        position: absolute;
+	display:flex-block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+    }
+.popup2 a {
+        display: block;
+        padding: 10px;
+        color: #333;
+	font-size:16px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    .popup2 a:hover {
+        background-color: #f2f2f2;
+    }
+    .popup2 button {
+        display: block;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .popup2 button:hover {
+        background-color: #0056b3;
+    }
+    .popup a {
+        display: block;
+        padding: 10px;
+        color: #333;
+	font-size:16px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    .popup a:hover {
+        background-color: #f2f2f2;
+    }
+    .popup button {
+        display: block;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .popup button:hover {
+        background-color: #0056b3;
+    }
+    p {
+        font-size: 11.3px;
+        margin: 0;
+        color: Grey;
+    }
+	.popup-container .popup2 p{
+		background-color: lightblue;
+		margin:8px;
+		border-radius:10px;
+	}
+	.popup-container .popup2 p a{color:black;}
+	.popup p{background-color: lightblue;
+	margin:8px;
+		border-radius:10px;
+	}
+	footer{
+	display:flex;
+	justify-content: space-evenly;
+	flex-direction: column;
+	color:white;
+	padding:0;
+	background-color: rgba(0,0,0,0.6);
+	font-size:23px;
+	margin-top:auto;
+	height:auto;
+	}
+	footer h6{	
+	
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <span id="pagetitle">
+    <h1>CONFIANCE <span style="color:orange;">IN</span ><span style="color:lightblue;">D</span><span style="color:green;">IA</span>
+    <p>One stop Solution provider for Energy/Metal/Process plants</P></h1>
+    </span>
+    <ul class="folder-list" id="folderList">
+        <li><a href="https://drive.google.com/open?id=1Z9jy0UX8napUc61REHrCs506RaOIltM4&usp=drive_copy" target="_blank">Challan</a></li>
+
+        <li><a href="https://drive.google.com/open?id=1CNsBbgipH6FpOGh_00T5FgIANBr_jBxK&usp=drive_copy" target="_blank">Credit Note</a></li>
+
+        <li><a href="#" id="openNinvoicePopup">Invoices</a></li>
+
+	<li><a href="#" id="openEwayPopup">Eway Bills</a></li>
+
+        <li><a href="#" id="openOfficeFilesPopup">Office Files</a></li>
+
+        <li><a href="#" id="openPOSPopup">POS</a></li>
+
+        <li><a href="https://drive.google.com/open?id=1Ex6YgSHyQY5d6vKfSVzMk3DT97CGRQVA&usp=drive_copy" target="_blank">Proforma Invoices</a></li>
+
+        <li><a href="#" id="openInvoicePopup">E-Invoices</a></li>
+
+        <li><a href="#" id="openCreditPopup">E-Credit Notes</a></li>
+    </ul>
+
+    <!-- POS Popup window -->
+	<div class="popup-container" id="OfficeFilesPopupContainer">
+        <div class="popup2">
+            <p><a href="https://drive.google.com/open?id=1Np4Vbmi9n3JYA8ntCIV5-8DR7gqJWpeM&usp=drive_copy" target="_blank">Mails</a></p>
+            <p><a href="https://drive.google.com/open?id=1Xx5HZg8fiNx5AdUjHD9Fj3VAnpg0Veb1&usp=drive_copy" target="_blank">Offer Sheet</a></p>
+            <p><a href="https://drive.google.com/open?id=13hZ4ZIkaS8OaRcnvnOLLJ_AwWMJXcfH9&usp=drive_copy" target="_blank">PI & Doc</a></p>
+            <p><a href="https://drive.google.com/open?id=1OpatkBCjIaVxKsn241-0UlAgJAbLufRc&usp=drive_copy" target="_blank">Status Sheet Reconcilation</a></p>
+	    <p><a href="https://drive.google.com/open?id=1ssTgDg0H8x1EJEj66owObKxSg5-i0Cd2&usp=drive_copy" target="_blank">Latest Status Sheet</a></p>
+	    <p><a href="https://drive.google.com/open?id=1e6wehC3ZKWyHOKQTHS9U96INDoo1syCI&usp=drive_copy" target="_blank">Tax Invoice</a></p>
+            <button onclick="closePopup('OfficeFilesPopupContainer')">Close</button>
+        </div>
+    </div>
+	<div class="popup-container" id="NinvoicePopupContainer">
+        <div class="popup2">
+            <p><a href="https://drive.google.com/open?id=1If-7dCNmE692T_u3JxPrXKvG0utqtZaX&usp=drive_copy" target="_blank">Invoice FY23-24</a></p>
+            <p><a href="https://drive.google.com/open?id=1xHmnhSNnakjn67imBB8E27BUWAcSpyKf&usp=drive_copy" target="_blank">Invoice FY24-25</a></p>
+            <button onclick="closePopup('NinvoicePopupContainer')">Close</button>
+        </div>
+    </div>
+    <div class="popup-container" id="POSPopupContainer">
+        <div class="popup2">
+            <p><a href="https://drive.google.com/open?id=16cE7uFvBE317FoRM9uWGzRkoxKtE3OA-&usp=drive_copy" target="_blank">Pos 2021</a></p>
+            <p><a href="https://drive.google.com/open?id=1wmCEE67qNQAS9ZkhNC546czJWDLsa0BN&usp=drive_copy" target="_blank">Pos 2022</a></p>
+            <p><a href="https://drive.google.com/open?id=1aqE101ij8UBH5yzVSCCw7ALVRnRwieBv&usp=drive_copy" target="_blank">Pos 2023</a></p>
+            <p><a href="https://drive.google.com/open?id=1fC6qzFZd4TmLgcVSzsq_f_-Zn-2dSgDN&usp=drive_copy" target="_blank">Pos 2024</a></p>
+            <button onclick="closePopup('POSPopupContainer')">Close</button>
+        </div>
+    </div>
+
+	<div class="popup-container" id="EwayPopupContainer">
+        <div class="popup2">
+            <p><a href="https://drive.google.com/open?id=1ig58uZlkr1WOOlvq8rySIqK-04v0vjb5&usp=drive_copy" target="_blank">Eway FY23-24</a></p>
+            <p><a href="https://drive.google.com/open?id=1p2fal9TXS1WIiJlGpmd7Qsee1X0FJ7h5&usp=drive_copy" target="_blank">Eway FY24-25</a></p>
+            <button onclick="closePopup('EwayPopupContainer')">Close</button>
+        </div>
+    </div>
+<!-- Invoice Popup window -->
+    <div class="popup" id="invoicePopup">
+        <p><a href="https://drive.google.com/open?id=17RvO8UIKnkdpUc3F99iCQGYA6AKDlPfV&usp=drive_copy" target="_blank">E-Invoice FY23-24</a></p>
+        <p><a href="https://drive.google.com/open?id=1W4gjgyW4Yez1qzlxerGNjhOHuJ_ghZ4i&usp=drive_copy" target="_blank">E-Invoice FY24-25</a></p>
+        <button onclick="closeInvoicePopup()">Close</button>
+    </div>
+	
+	
+	<!-- Credit Note Popup window -->
+    <div class="popup popup02" id="creditPopup">
+        <p><a href="https://drive.google.com/open?id=1Cgk7YMXMOb5pUFVs3R222dzD0jNa3lTv&usp=drive_copy" target="_blank">Credit Note FY23-24</a></p>
+        <p><a href="https://drive.google.com/open?id=1tM8HFC4psyn5qHL05rWqvb1xfaVA7f_G&usp=drive_copy" target="_blank">Credit Note FY24-25</a></p>
+        <button onclick="closeCreditPopup()">Close</button>
+    </div>
+</div>
+<footer>
+	<span id="pagetitle" style="text-align:center;align-items:center;">
+	<h6>All rights reserved © ConfianceIndia 2024 <br><span style="font-size:10px;">Developed By CODE X NOOB</span></h6>
+	</span>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	// Function to open the Office files popup
+    document.getElementById('openOfficeFilesPopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        document.getElementById('OfficeFilesPopupContainer').style.display = 'block'; // Display the POS popup
+    });
+
+    // Function to close the popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+	
+	// Function to open the Invoices popup
+    document.getElementById('openNinvoicePopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        document.getElementById('NinvoicePopupContainer').style.display = 'block'; // Display the POS popup
+    });
+
+    // Function to close the popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+
+    // Function to open the POS popup
+    document.getElementById('openPOSPopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        document.getElementById('POSPopupContainer').style.display = 'block'; // Display the POS popup
+    });
+
+    // Function to close the popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+  // Function to open the Eways popup
+    document.getElementById('openEwayPopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        document.getElementById('EwayPopupContainer').style.display = 'block'; // Display the POS popup
+    });
+
+    // Function to close the popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+ // Function to open the invoice popup
+    document.getElementById('openInvoicePopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        closeCreditPopup(); // Close the credit popup if it's open
+        document.getElementById('invoicePopup').style.display = 'block'; // Display the invoice popup
+    });
+
+    // Function to close the invoice popup
+    function closeInvoicePopup() {
+        document.getElementById('invoicePopup').style.display = 'none';
+    }
+
+    // Function to open the Credit popup
+    document.getElementById('openCreditPopup').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        closeInvoicePopup(); // Close the invoice popup if it's open
+        document.getElementById('creditPopup').style.display = 'block'; // Display the credit popup
+    });
+
+    // Function to close the credit popup
+    function closeCreditPopup() {
+        document.getElementById('creditPopup').style.display = 'none';
+    }
+</script>
+
+
+</body>
+</html>
